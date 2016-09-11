@@ -16,7 +16,7 @@ module Validators
     private
 
     def check(value)
-      raise OutOfRangeValue unless @min < value && value <= @max
+      raise OutOfRangeValue unless @min <= value && value <= @max
     end
   end
 end

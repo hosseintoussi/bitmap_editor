@@ -3,6 +3,7 @@ require './app/bitmap_config'
 
 class Bitmap
   attr_accessor :table
+  attr_reader :columns, :rows
   def initialize(columns: 1, rows: 1, default_value: BitmapConfig::DEFAULT_VALUE)
     @columns = columns
     @rows = rows
@@ -13,6 +14,6 @@ class Bitmap
   private
 
   def build_table
-    @table = Matrix.build(@columns, @rows) { @default_value }
+    @table = Matrix.build(columns, rows) { @default_value }
   end
 end

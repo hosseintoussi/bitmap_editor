@@ -10,12 +10,14 @@ class Bitmap
     @rows = rows
     @default_value = default_value
     validator.validate(x: columns, y: rows)
-    build_table
+    build_or_clear_table
   end
 
-  private
-
-  def build_table
+  def build_or_clear_table
     @table = Matrix.build(columns, rows) { @default_value }
+  end
+
+  def change_cell_color(column:, row:, color:)
+    @table.send(:[]=, row, column, color)
   end
 end

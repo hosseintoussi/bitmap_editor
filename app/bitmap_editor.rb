@@ -1,3 +1,11 @@
+require 'pry'
+require './app/bitmap'
+require './app/commands/cell_color'
+require './app/commands/horizontal_color'
+require './app/commands/vertical_color'
+require './app/commands/clear'
+require './app/commands/display'
+
 class BitmapEditor
   def run
     @running = true
@@ -5,7 +13,32 @@ class BitmapEditor
     while @running
       print '> '
       input = gets.chomp
-      case input
+      chars = input.delete(' ').chars
+      command = chars.shift
+      case command
+        when 'I'
+          rows = chars[0].to_i
+          columns = chars[1].to_i
+          bitmap = Bitmap.new(rows: rows, columns: columns)
+        when 'C'
+          Commands::Clean.new(bitmap: bitmap).call
+        when 'L'
+          row = chars[1].to_i - 1
+          column = chars[0].to_i - 1
+          Commands::CellColor.new(bitmap: bitmap).call(row: row, column: column, color: chars[2])
+        when 'V'
+          column = chars[0].to_i - 1
+          from = chars[1].to_i - 1
+          to = chars[2].to_i - 1
+          Commands::VerticalColor.new(bitmap: bitmap).call(column: column,from: from, to: to, color: chars[3])
+        when 'H'
+          row = chars[2].to_i - 1
+          from = chars[0].to_i - 1
+          to = chars[1].to_i - 1
+
+          Commands::HorizontalColor.new(bitmap: bitmap).call(from:from, to: to, row: row, color: chars[3])
+        when 'S'
+          Commands::Display.new(bitmap: bitmap).call
         when '?'
           show_help
         when 'X'

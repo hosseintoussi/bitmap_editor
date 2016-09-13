@@ -8,10 +8,10 @@ module Validators
 
     def validate(x: nil, y: nil)
       if x
-        raise NotValidRow unless 0 < x && x <= @bitmap.rows
+        raise NotValidRow unless 0 <= x && x <= @bitmap.rows
       end
       if y
-        raise NotValidColumn unless 0 < y && y <= @bitmap.columns
+        raise NotValidColumn unless 0 <= y && y <= @bitmap.columns
       end
     end
   end

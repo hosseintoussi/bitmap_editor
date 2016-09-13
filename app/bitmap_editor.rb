@@ -13,7 +13,7 @@ class BitmapEditor
     while @running
       print '> '
       input = gets.chomp
-      chars = input.delete(' ').chars
+      chars = input.split(' ')
       command = chars.shift
       case command
         when 'I'
@@ -21,22 +21,13 @@ class BitmapEditor
           columns = chars[1].to_i
           bitmap = Bitmap.new(rows: rows, columns: columns)
         when 'C'
-          Commands::Clean.new(bitmap: bitmap).call
+          Commands::Clear.new(bitmap: bitmap).call
         when 'L'
-          row = chars[1].to_i - 1
-          column = chars[0].to_i - 1
-          Commands::CellColor.new(bitmap: bitmap).call(row: row, column: column, color: chars[2])
+          Commands::CellColor.new(bitmap: bitmap).call(column: chars[0], row: chars[1], color: chars[2])
         when 'V'
-          column = chars[0].to_i - 1
-          from = chars[1].to_i - 1
-          to = chars[2].to_i - 1
-          Commands::VerticalColor.new(bitmap: bitmap).call(column: column,from: from, to: to, color: chars[3])
+          Commands::VerticalColor.new(bitmap: bitmap).call(column: chars[0],from: chars[1], to: chars[2], color: chars[3])
         when 'H'
-          row = chars[2].to_i - 1
-          from = chars[0].to_i - 1
-          to = chars[1].to_i - 1
-
-          Commands::HorizontalColor.new(bitmap: bitmap).call(from:from, to: to, row: row, color: chars[3])
+          Commands::HorizontalColor.new(bitmap: bitmap).call(from: chars[0], to: chars[1], row: chars[2], color: chars[3])
         when 'S'
           Commands::Display.new(bitmap: bitmap).call
         when '?'

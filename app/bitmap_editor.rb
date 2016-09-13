@@ -5,6 +5,7 @@ require './app/commands/vertical_color'
 require './app/commands/clear'
 require './app/commands/create'
 require './app/commands/display'
+require './app/errors'
 
 class BitmapEditor
   def run
@@ -15,7 +16,8 @@ class BitmapEditor
       input = gets.chomp
       chars = input.split(' ')
       command = chars.shift
-      case command
+      begin
+        case command
         when 'I'
           bitmap = Commands::Create.new(rows: chars[0], columns: chars[1]).call
         when 'C'
@@ -34,7 +36,18 @@ class BitmapEditor
           exit_console
         else
           puts 'unrecognised command :('
-      end
+        end
+    rescue OutOfRangeValue
+      puts 'Values were out of range'
+    rescue NotValidRow
+      puts 'Row value was invalid'
+    rescue NotValidColumn
+      puts 'Column value was invalid'
+    rescue NoImageFound
+      puts 'Image does not exists yet'
+    rescue NotValidColor
+      puts 'Color should be uppercase letter between A-Z'
+    end
     end
   end
 

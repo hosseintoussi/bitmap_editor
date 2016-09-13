@@ -3,10 +3,10 @@ require './app/commands/color_base'
 module Commands
   class VerticalColor < ColorBase
     def call(column:, from:, to:, color:)
-      execute_validations(column: column, from: from, to: to)
+      execute_validations(column: sanitize(column), from: sanitize(from), to: sanitize(to))
 
       (from..to).each do |row|
-        @bitmap.change_cell_color(row: row, column: column, color: color)
+        @bitmap.change_cell_color(row: sanitize(row), column: sanitize(column), color: color)
       end
     end
 

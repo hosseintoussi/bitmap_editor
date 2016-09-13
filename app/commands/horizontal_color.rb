@@ -3,10 +3,10 @@ require './app/commands/color_base'
 module Commands
   class HorizontalColor < ColorBase
     def call(row:, from:, to:, color:)
-      execute_validations(row: row, from: from, to: to)
+      execute_validations(row: sanitize(row), from: sanitize(from), to: sanitize(to))
 
       (from..to).each do |column|
-        @bitmap.change_cell_color(row: row, column: column, color: color)
+        @bitmap.change_cell_color(row: sanitize(row), column: sanitize(column), color: color)
       end
     end
 

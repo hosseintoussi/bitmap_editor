@@ -11,5 +11,11 @@ module Commands
     def call(*args)
       raise 'This method is not implemented yet!'
     end
+
+    private
+
+    def sanitize(input)
+      input.to_i - 1
+    end
   end
 end

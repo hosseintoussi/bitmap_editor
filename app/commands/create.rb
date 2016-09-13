@@ -25,6 +25,7 @@ module Commands
     end
 
     def table_validate_executions
+      #overriding this method to empty body as on create there is no table to validate
     end
   end
 end

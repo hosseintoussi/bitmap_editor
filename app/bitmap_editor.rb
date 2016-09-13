@@ -37,17 +37,17 @@ class BitmapEditor
         else
           puts 'unrecognised command :('
         end
-    rescue OutOfRangeValue
-      puts 'Values were out of range'
-    rescue NotValidRow
-      puts 'Row value was invalid'
-    rescue NotValidColumn
-      puts 'Column value was invalid'
-    rescue NoImageFound
-      puts 'Image does not exists yet'
-    rescue NotValidColor
-      puts 'Color should be uppercase letter between A-Z'
-    end
+      rescue OutOfRangeValue
+        puts 'Values were out of range'
+      rescue NotValidRow
+        puts 'Row value was invalid'
+      rescue NotValidColumn
+        puts 'Column value was invalid'
+      rescue NoImageFound
+        puts 'Image does not exists yet'
+      rescue NotValidColor
+        puts 'Color should be uppercase letter between A-Z'
+      end
     end
   end
 

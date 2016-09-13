@@ -8,4 +8,3 @@ module Validators
     end
   end
 end
-

@@ -1,7 +1,13 @@
-require './app/commands/color_base'
+require './app/commands/base'
+require './app/validators/coordinate'
 
 module Commands
-  class HorizontalColor < ColorBase
+  class HorizontalColor < Base
+    def initialize(bitmap:, validator: Validators::Coordinate)
+      super(bitmap: bitmap)
+      @validator = validator.new(bitmap: @bitmap)
+    end
+
     def call(row:, from:, to:, color:)
       execute_validations(row: sanitize(row), from: sanitize(from), to: sanitize(to))
 

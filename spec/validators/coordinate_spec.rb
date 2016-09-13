@@ -1,7 +1,5 @@
 require 'spec_helper'
 require './app/validators/coordinate'
-require './app/bitmap'
-require './app/errors'
 
 describe Validators::Coordinate do
   describe '.validate' do

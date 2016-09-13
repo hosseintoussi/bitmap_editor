@@ -1,5 +1,4 @@
 require 'pry'
-require './app/bitmap'
 require './app/commands/cell_color'
 require './app/commands/horizontal_color'
 require './app/commands/vertical_color'

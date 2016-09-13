@@ -23,5 +23,8 @@ module Commands
     def sanitize(input)
       input.to_i
     end
+
+    def table_validate_executions
+    end
   end
 end

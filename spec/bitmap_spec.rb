@@ -1,6 +1,5 @@
 require 'spec_helper'
 require './app/bitmap'
-require './app/validators/size'
 
 describe Bitmap do
   describe '.new' do

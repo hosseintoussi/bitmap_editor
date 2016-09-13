@@ -1,7 +1,5 @@
 require 'spec_helper'
 require './app/commands/create'
-require './app/validators/size'
-require './app/bitmap'
 
 describe Commands::Create do
   describe '.call' do

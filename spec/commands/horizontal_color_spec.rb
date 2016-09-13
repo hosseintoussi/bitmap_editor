@@ -1,7 +1,5 @@
 require 'spec_helper'
 require './app/commands/horizontal_color'
-require './app/validators/coordinate'
-require './app/bitmap.rb'
 
 describe Commands::HorizontalColor do
   describe '.call' do
@@ -9,6 +7,7 @@ describe Commands::HorizontalColor do
       validator = double(Validators::Coordinate)
       allow(validator).to receive(:new).and_return(validator)
       allow(validator).to receive(:validate).and_return(nil)
+      allow_any_instance_of(Validators::Table).to receive(:validate).and_return(nil)
       bitmap = double(Bitmap)
       horizontal_color = described_class.new(bitmap: bitmap, validator: validator)
 

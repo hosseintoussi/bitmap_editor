@@ -8,6 +8,7 @@ describe Commands::CellColor do
     it 'sends change_cell_color to bitmap object with instructions' do
       validator = double(Validators::Coordinate)
       allow(validator).to receive(:new).and_return(validator)
+      allow_any_instance_of(Validators::Table).to receive(:validate).and_return(nil)
       allow(validator).to receive(:validate).and_return(nil)
       bitmap = double(Bitmap)
       cell_color = described_class.new(bitmap: bitmap, validator: validator)

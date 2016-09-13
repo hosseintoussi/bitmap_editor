@@ -1,6 +1,5 @@
 require 'spec_helper'
 require './app/commands/display'
-require './app/bitmap'
 
 describe Commands::Display do
   describe '.call' do

@@ -1,6 +1,5 @@
 require 'spec_helper'
 require './app/validators/size'
-require './app/errors'
 
 describe Validators::Size do
   describe '.validate' do

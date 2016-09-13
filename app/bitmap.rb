@@ -15,6 +15,7 @@ class Bitmap
   end
 
   def change_cell_color(column:, row:, color:)
+    # this is because []= appears to be a private method in Matrix!
     @table.send(:[]=, row, column, color)
   end
 end

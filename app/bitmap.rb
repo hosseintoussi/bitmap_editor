@@ -2,8 +2,7 @@ require 'matrix'
 require './app/bitmap_config'
 
 class Bitmap
-  attr_accessor :columns, :rows
-  attr_reader :table
+  attr_reader :table, :columns, :rows
   def initialize(columns: 1, rows: 1, default_value: BitmapConfig::DEFAULT_VALUE)
     @columns = columns
     @rows = rows

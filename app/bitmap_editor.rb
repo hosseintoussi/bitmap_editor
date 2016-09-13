@@ -4,6 +4,7 @@ require './app/commands/cell_color'
 require './app/commands/horizontal_color'
 require './app/commands/vertical_color'
 require './app/commands/clear'
+require './app/commands/create'
 require './app/commands/display'
 
 class BitmapEditor
@@ -17,9 +18,7 @@ class BitmapEditor
       command = chars.shift
       case command
         when 'I'
-          rows = chars[0].to_i
-          columns = chars[1].to_i
-          bitmap = Bitmap.new(rows: rows, columns: columns)
+          bitmap = Commands::Create.new(rows: chars[0], columns: chars[1]).call
         when 'C'
           Commands::Clear.new(bitmap: bitmap).call
         when 'L'

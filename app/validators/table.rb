@@ -1,5 +1,5 @@
-require './app/bitmap_config'
 require './app/errors'
+require './app/bitmap'
 
 module Validators
   class Table
@@ -8,7 +8,7 @@ module Validators
     end
 
     def validate
-      raise NoImageFound if @bitmap.table.nil?
+      raise NoImageFound unless @bitmap.respond_to?(:table)
     end
   end
 end

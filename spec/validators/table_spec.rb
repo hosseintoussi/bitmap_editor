@@ -3,9 +3,8 @@ require './app/validators/table'
 
 describe Validators::Table do
   describe '.validate' do
-    it 'validates if table exists' do
-      bitmap = double(Bitmap)
-      allow(bitmap).to receive(:table).and_return(nil)
+    it 'raises if table does not exists' do
+      bitmap = nil
 
       validator = described_class.new(bitmap: bitmap)
 
@@ -14,7 +13,7 @@ describe Validators::Table do
 
     it 'raises nothing if table exists' do
       bitmap = double(Bitmap)
-      allow(bitmap).to receive(:table).and_return([1,1])
+      allow(bitmap).to receive(:table)
 
       validator = described_class.new(bitmap: bitmap)
 
